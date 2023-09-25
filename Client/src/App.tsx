@@ -5,21 +5,21 @@ import {
   Route,
 } from "react-router-dom";
 import "./App.css";
-import PageLayout from "./layout/PageLayout";
+import AdminLayout from "./layout/AminLayout";
 import Error from "./page/Error";
-import AuthenLayout from "./layout/AuthenLayout";
-import Login from "./page/Login";
 import Admin from "./page/Admin";
+import PageLayout from "./layout/AuthenLayout copy";
+import Home from "./page/Home";
 
 function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route errorElement={<Error />}>
-        <Route path="/" element={<PageLayout />}>
+        <Route path="/" element={<AdminLayout />}>
            <Route path="admin" element={<Admin />}></Route>
         </Route>
-        <Route path="/" element={<AuthenLayout />}>
-            <Route index element={<Login />}/>
+        <Route path="/" element={<PageLayout />}>
+            <Route index element={<Home />}/>
         </Route>
       </Route>
     ),
