@@ -5,10 +5,11 @@ import {
   Route,
 } from "react-router-dom";
 import "./App.css";
+import 'react-slideshow-image/dist/styles.css'
 import AdminLayout from "./layout/AminLayout";
 import Error from "./page/Error";
 import Admin from "./page/Admin";
-import PageLayout from "./layout/AuthenLayout copy";
+import PageLayout from "./layout/PageLayout";
 import Home from "./page/Home";
 
 function App() {
