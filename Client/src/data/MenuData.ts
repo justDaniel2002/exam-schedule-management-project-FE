@@ -10,7 +10,7 @@ const MenuData = [
     },
     {
         label:"Blog",
-        link:"/"
+        link:"/Blogs"
     },
     {
         label:"Khóa học thử 3 ngày",

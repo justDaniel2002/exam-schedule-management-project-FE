@@ -18,6 +18,8 @@ import Login from "./page/Login";
 import SettingSideBar from "./components/SettingSideBar";
 import ForgetPass from "./page/ForgetPass";
 import Register from "./page/Register";
+import BlogsPage from "./page/BlogsPage";
+import BlogDetail from "./page/BlogDetail";
 
 function App() {
   const router = createBrowserRouter(
@@ -35,8 +37,9 @@ function App() {
             <Route path="forgotpass" element={<ForgetPass />}/>
             <Route path="Profile" element={<SettingSideBar />}/>
             <Route path="signUp" element={<Register />}/>
+            <Route path="Blogs" element={<BlogsPage />}/>
+            <Route path="BlogDetail/:index" element={<BlogDetail />}/>
         </Route>
-        
       </Route>
     ),
     { basename: "" }
