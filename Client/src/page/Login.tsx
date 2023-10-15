@@ -50,7 +50,7 @@ const Login = () => {
           <span>Login with Google</span>
         </button>
         <div className="mt-3 font-medium mb-20">
-          First time know this page ? <Link to={"signUp"}>Sign Up</Link>
+          First time know this page ? <Link to={"/signUp"}>Sign Up</Link>
         </div>
       </div>
     </>
