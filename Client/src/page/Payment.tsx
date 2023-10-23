@@ -1,9 +1,28 @@
-import { Form, Link } from "react-router-dom";
+import { Form, useNavigate } from "react-router-dom";
 import CreditCardIcon from "@mui/icons-material/CreditCard";
-import CartData from "../data/CartData";
-import { numberToVietnameseDong } from "../util/util";
+import { useRecoilValue } from "recoil";
+import { cartState } from "../atom/atom";
+import { CartElement } from "../Type/Type";
+import { toast } from "react-toastify";
 
 const Payment = () => {
+  const cart: CartElement[] = useRecoilValue(cartState);
+  const navigate = useNavigate()
+
+  const submitFrm = (event: any) => {
+    event.preventDefault();
+    const formData = new FormData(event.target);
+
+    // for (const [name, value] of formData.entries()) {
+    //   if (value === null || value === "") {
+    //     toast(`Form field "${name}" has a null or empty value.`, {
+    //       type: toast.TYPE.WARNING,
+    //     });
+    //   }
+    // }
+    navigate("/SuccessPayment")
+    
+  };
   return (
     <>
       <div className="bg-lime-300 pt-40 font-medium">
@@ -12,10 +31,11 @@ const Payment = () => {
           <CreditCardIcon sx={{ fontSize: "70px" }} className="opacity-70" />
         </div>
         <div className="m-auto w-2/5 mb-20">
-          <Form method="post">
+          <Form onSubmit={(event) => submitFrm(event)} method="post">
             <div className="mb-14">
               <label className="mb-2 text-sm opacity-70 block">User name</label>
               <input
+                required
                 name="username"
                 className="w-full p-2 rounded-lg"
                 placeholder="Type here"
@@ -25,6 +45,7 @@ const Payment = () => {
             <div className="mb-14">
               <label className="mb-2 text-sm opacity-70 block">Email</label>
               <input
+                required
                 name="email"
                 className="w-full p-2 rounded-lg"
                 placeholder="Type here"
@@ -36,6 +57,7 @@ const Payment = () => {
                 Phone number
               </label>
               <input
+                required
                 name="phone"
                 className="w-full p-2 rounded-lg"
                 placeholder="Type here"
@@ -62,20 +84,21 @@ const Payment = () => {
                   name="ammount"
                   className="w-full p-2 rounded-lg"
                   readOnly
-                  value={numberToVietnameseDong(CartData.reduce((accumulator, currentObject) => {
-                    return accumulator + currentObject.UnitPrice;
-                  }, 0))}
+                  value={cart.reduce(
+                    (accumulator: number, currentObject: CartElement) => {
+                      return accumulator + currentObject.Course.price;
+                    },
+                    0
+                  )}
                 />
               </div>
             </div>
+            <div className="text-center">
+              <button className="text-white bg-orange-500 py-2 px-6 mb-20">
+                Thanh toán
+              </button>
+            </div>
           </Form>
-        </div>
-        <div className="text-center">
-          <Link to={"/"}>
-            <button className="text-white bg-orange-500 py-2 px-6 mb-20">
-              Thanh toán
-            </button>
-          </Link>
         </div>
       </div>
     </>
