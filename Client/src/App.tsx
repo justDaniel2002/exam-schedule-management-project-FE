@@ -16,7 +16,7 @@ import PageLayout from "./layout/PageLayout";
 import Home from "./page/Home/Home";
 import LandingPage from "./page/LandingPage";
 import Cart from "./page/Cart";
-import Payment from "./page/Payment";
+import Payment from "./page/payment/Payment";
 import Login from "./page/auth/LoginPage/Login";
 import SettingSideBar from "./components/SettingSideBar";
 import ForgetPass from "./page/ForgetPass";
@@ -51,6 +51,7 @@ function App() {
           <Route path="BlogDetail/:id" element={<BlogDetail />} loader={blogDetailLoader}/>
           <Route path="Courses" element={<Courses />} loader={homeLoader}/>SuccessPayment
           <Route path="SuccessPayment" element={<SuccessPayment />}/>
+          <Route path="info-student" element={<SuccessPayment />}/>
         </Route>
       </Route>
     ),

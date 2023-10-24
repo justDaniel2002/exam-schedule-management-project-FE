@@ -9,7 +9,11 @@ export const loginAction = async ({ request }: { request: Request }) => {
     }
     const result = await authAPI.loginApi(data)
     console.log(result)
-    //decodeToken(result.token)
+    if(result.token){
+        const decodeData:any = decodeToken(result.token)
+        return {refreshToken: result.refreshToken, ...decodeData}
+    }
+    
     return result
 
 }

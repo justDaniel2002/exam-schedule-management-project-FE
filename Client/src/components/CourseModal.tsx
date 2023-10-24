@@ -39,7 +39,7 @@ export const CourseModal = ({ course }: { course: Course | any }) => {
           </div>
         </div>
         <div className="text-center mt-5">
-          {account?.role === "CUSTOMER" ? (
+          {account?.rolename === "CUSTOMER" ? (
             <button
               onClick={addToCart}
               className="py-2 px-5 border border-yellow-400 rounded-full text-yellow-500 font-medium hover:text-white hover:bg-yellow-500"

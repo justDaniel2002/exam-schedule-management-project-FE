@@ -1,15 +1,19 @@
 import { Form, useNavigate } from "react-router-dom";
 import CreditCardIcon from "@mui/icons-material/CreditCard";
 import { useRecoilValue } from "recoil";
-import { cartState } from "../atom/atom";
-import { CartElement } from "../Type/Type";
+import { accountState, cartState } from "../../atom/atom";
+import { CartElement } from "../../Type/Type";
+import { v4 as uuidv4 } from 'uuid'; 
 import { toast } from "react-toastify";
+import { API } from "../../API/API";
+import { formatDateToYYYYMMDD, generateShortUUID } from "../../util/util";
 
 const Payment = () => {
   const cart: CartElement[] = useRecoilValue(cartState);
+  const account: any = useRecoilValue(accountState);
   const navigate = useNavigate()
 
-  const submitFrm = (event: any) => {
+  const submitFrm = async (event: any) => {
     event.preventDefault();
     const formData = new FormData(event.target);
 
@@ -20,7 +24,22 @@ const Payment = () => {
     //     });
     //   }
     // }
-    navigate("/SuccessPayment")
+
+    const orderData = {
+      order_code: generateShortUUID(uuidv4().toString()),
+      order_date: formatDateToYYYYMMDD(new Date()),
+      price: formData.get(`ammount`),
+      user_id: account.userid,
+      courseIds: cart.map(c => c.Course.courseid)
+    }
+
+    console.log(orderData);
+
+    const result = await API.payment(orderData)
+    console.log(result)
+    if(result?.data){
+      window.open(result.data)
+    }
     
   };
   return (
@@ -39,6 +58,7 @@ const Payment = () => {
                 name="username"
                 className="w-full p-2 rounded-lg"
                 placeholder="Type here"
+                value={account?.username}
               />
             </div>
 
@@ -49,6 +69,7 @@ const Payment = () => {
                 name="email"
                 className="w-full p-2 rounded-lg"
                 placeholder="Type here"
+                value={account?.email}
               />
             </div>
 

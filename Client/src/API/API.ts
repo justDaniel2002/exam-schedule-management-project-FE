@@ -1,5 +1,4 @@
 import axios from "axios";
-import { Blog } from "../Type/Type";
 
 const getAllCourse = async () => {
   const res = await axios.get(`http://localhost:8088/public/course/view`);
@@ -27,4 +26,9 @@ const getTop4Course = async() => {
   return res?.data
 }
 
-export const API = { getAllCourse, getAllPost, getPostById, getTop4Course };
+const payment = async (data:any) => {
+  const res = await axios.post(`http://localhost:8088/public/orders/payment`, data)
+  return res?.data
+}
+
+export const API = { getAllCourse, getAllPost, getPostById, getTop4Course, payment };
