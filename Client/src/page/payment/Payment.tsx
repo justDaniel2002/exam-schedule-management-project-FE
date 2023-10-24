@@ -40,6 +40,8 @@ const Payment = () => {
     if(result?.data){
       window.open(result.data)
     }
+
+    navigate("/SuccessPayment")
     
   };
   return (
