@@ -8,7 +8,6 @@ import "./App.css";
 import "react-slideshow-image/dist/styles.css";
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
-import { RecoilRoot } from "recoil";
 import AdminLayout from "./layout/AminLayout";
 import Error from "./page/Error";
 import Admin from "./page/Admin";
@@ -28,10 +27,15 @@ import { registerAction } from "./page/auth/Register/registerAction";
 import { blogLoader } from "./page/Blogs/BlogLoader";
 import { homeLoader } from "./page/Home/HomeLoader";
 import { blogDetailLoader } from "./page/Blogs/BlogDetail/BlogDetailLoader";
-import { Courses } from "./page/Courses";
+import { HomeCourses } from "./page/HomeCourses";
 import { SuccessPayment } from "./page/SuccessPayment";
+import { MyCourses } from "./page/myCourses/MyCourses";
+import { myCourseLoader } from "./page/myCourses/MyCourseLoader";
+import { Lessions } from "./page/lessions/Lessions";
+import { lessionLoader } from "./page/lessions/LessionsLoader";
 
 function App() {
+
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route errorElement={<Error />}>
@@ -49,9 +53,11 @@ function App() {
           <Route path="signUp" element={<Register />} action={registerAction} />
           <Route path="Blogs" element={<BlogsPage />} loader={blogLoader}/>
           <Route path="BlogDetail/:id" element={<BlogDetail />} loader={blogDetailLoader}/>
-          <Route path="Courses" element={<Courses />} loader={homeLoader}/>SuccessPayment
+          <Route path="Courses" element={<HomeCourses />} loader={homeLoader}/>SuccessPayment
           <Route path="SuccessPayment" element={<SuccessPayment />}/>
           <Route path="info-student" element={<SuccessPayment />}/>
+          <Route path="MyCourses/:userid" element={<MyCourses />} loader={myCourseLoader}/>
+          <Route path="Lessions/:courseid" element={<Lessions />} loader={lessionLoader}/>
         </Route>
       </Route>
     ),
@@ -60,10 +66,8 @@ function App() {
 
   return (
     <>
-      <RecoilRoot>
         <RouterProvider router={router} fallbackElement={<p>Loading</p>} />
         <ToastContainer />
-      </RecoilRoot>
     </>
   );
 }

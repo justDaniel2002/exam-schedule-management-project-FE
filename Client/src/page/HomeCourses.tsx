@@ -7,7 +7,7 @@ import Modal from "@mui/material/Modal";
 import { modalCOurseStyle } from '../css/modalStyle';
 import { CourseModal } from "../components/CourseModal";
 
-export const Courses = () => {
+export const HomeCourses = () => {
 
     const [open, setOpen] = useState(false);
   const [modalCourse, setModalCourse]: any = useState();
@@ -26,11 +26,11 @@ export const Courses = () => {
           }}
           className="border-b-4 border-black"
         >
-          <img className="w-4/5 m-auto mt-5 mb-10" src={course.courseImg} />
+          <img className="w-4/5 m-auto mt-5 mb-10" src={course.courseImage} />
           <div className="flex justify-end">
             <div className="text-center text-xs bg-yellow-500 w-1/4">
-              {course?.levelinfo !== undefined
-                ? course?.levelinfo?.levelName
+              {course?.levelModal !== undefined
+                ? course?.levelModal?.levelName
                 : "CHƯA LỰA CHỌN CẤP ĐỘ"}
             </div>
           </div>
@@ -58,7 +58,7 @@ export const Courses = () => {
   };
 
     return <>
-    <div className="bg-lime-400">
+    <div className="bg-lime-400 pt-20">
     <div className="text-7xl font-medium text-center py-10">
         KHÓA HỌC CHO BÉ
       </div>

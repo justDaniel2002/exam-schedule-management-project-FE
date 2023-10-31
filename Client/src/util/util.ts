@@ -49,4 +49,13 @@ export function generateShortUUID(characters: string) {
   return shortUUID;
 }
 
+export function isPhoneNumberValid(phoneNumber:string) {
+  // Define a regular expression pattern for a typical phone number.
+  // This pattern assumes a North American phone number format.
+  const phonePattern = /^\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}$/;
+
+  // Test the input phoneNumber against the pattern.
+  return phonePattern.test(phoneNumber);
+}
+
 export {numberToVietnameseDong}

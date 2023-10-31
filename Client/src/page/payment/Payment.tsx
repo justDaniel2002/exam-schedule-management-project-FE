@@ -4,7 +4,6 @@ import { useRecoilValue } from "recoil";
 import { accountState, cartState } from "../../atom/atom";
 import { CartElement } from "../../Type/Type";
 import { v4 as uuidv4 } from 'uuid'; 
-import { toast } from "react-toastify";
 import { API } from "../../API/API";
 import { formatDateToYYYYMMDD, generateShortUUID } from "../../util/util";
 
