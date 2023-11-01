@@ -1,4 +1,4 @@
-import { Form, useActionData, useNavigate, useSubmit } from "react-router-dom"
+import { Form, useNavigate } from "react-router-dom"
 import { useRecoilState } from "recoil"
 import { accountState } from "../../atom/atom"
 import { isPhoneNumberValid } from "../../util/util"
@@ -48,7 +48,7 @@ const EditProfile = ()=> {
     <Form method="post" onSubmit={(event) => submitFrm(event)} className="mt-10 mb-36 font-bold">
           <div className="mb-3">
           <label>UserName</label>
-          <input name="username" required className="block p-2 w-full border" defaultValue={account?.username}/>
+          <input name="username" required className="block p-2 w-full border" value={account?.username}/>
           </div>
           <div className="mb-3">
           <label>Email</label>

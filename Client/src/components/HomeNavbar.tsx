@@ -53,12 +53,17 @@ const HomeNavbar = () => {
             >
               Khóa học của tôi
             </Link>
-          ) : (
-            ""
-          )}
+          ) : account?.rolename === "INSTRUCTOR" ?(
+            <Link
+              className="font-semibold mr-10 hover:text-yellow-500"
+              to={`/InstructorCourses/${account?.userid}`}
+            >
+              Khóa học đã tạo
+            </Link>
+          ):""}
         </div>
         <div className="flex items-center">
-          {account?.rolename === "CUSTOMER" ? (
+          {account? (
             <>
               <Link to={"/Cart"}>
                 <ShoppingCartIcon

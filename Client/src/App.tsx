@@ -33,6 +33,15 @@ import { MyCourses } from "./page/myCourses/MyCourses";
 import { myCourseLoader } from "./page/myCourses/MyCourseLoader";
 import { Lessions } from "./page/lessions/Lessions";
 import { lessionLoader } from "./page/lessions/LessionsLoader";
+import { CourseCategories } from "./page/CourseCategory/CourseCategories";
+import { courseCategoriesLoader } from "./page/CourseCategory/courseCategoriesLoader";
+import { Courses } from "./page/Course/Courses";
+import { coursesLoader } from "./page/Course/coursesLoader";
+import { InstructorCourses } from "./page/InstructorCourses/InstructorCourses";
+import { instructorCourseLoader } from "./page/InstructorCourses/instructorCoursesLoader";
+import { CreateCourse } from "./page/CreateCourse/CreateCourse";
+import { CreateLession } from "./page/CreateLession/CreateLession";
+import { createCourseLoader } from "./page/CreateCourse/createCourseLoader";
 
 function App() {
 
@@ -53,11 +62,16 @@ function App() {
           <Route path="signUp" element={<Register />} action={registerAction} />
           <Route path="Blogs" element={<BlogsPage />} loader={blogLoader}/>
           <Route path="BlogDetail/:id" element={<BlogDetail />} loader={blogDetailLoader}/>
-          <Route path="Courses" element={<HomeCourses />} loader={homeLoader}/>SuccessPayment
+          <Route path="Courses" element={<HomeCourses />} loader={homeLoader}/>
           <Route path="SuccessPayment" element={<SuccessPayment />}/>
           <Route path="info-student" element={<SuccessPayment />}/>
           <Route path="MyCourses/:userid" element={<MyCourses />} loader={myCourseLoader}/>
+          <Route path="InstructorCourses/:userid" element={<InstructorCourses />} loader={instructorCourseLoader}/>
           <Route path="Lessions/:courseid" element={<Lessions />} loader={lessionLoader}/>
+          <Route path="CourseCategories" element={<CourseCategories />} loader={courseCategoriesLoader}/>
+          <Route path="Courses/:category/:categoryId" element={<Courses />} loader={coursesLoader}/>
+          <Route path="createCourse" element={<CreateCourse />} loader={createCourseLoader}/>
+          <Route path="CreateLession/:courseId" element={<CreateLession />}/>
         </Route>
       </Route>
     ),

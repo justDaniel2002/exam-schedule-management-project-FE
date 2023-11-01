@@ -1,15 +1,14 @@
-import { useState } from 'react'
+import { useState } from "react";
 import { Slide } from "react-slideshow-image";
 import { Course } from "../Type/Type";
 import { useLoaderData } from "react-router-dom";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
-import { modalCOurseStyle } from '../css/modalStyle';
+import { modalCOurseStyle } from "../css/modalStyle";
 import { CourseModal } from "../components/CourseModal";
 
 export const HomeCourses = () => {
-
-    const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(false);
   const [modalCourse, setModalCourse]: any = useState();
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -57,32 +56,33 @@ export const HomeCourses = () => {
     return slides;
   };
 
-    return <>
-    <div className="bg-lime-400 pt-20">
-    <div className="text-7xl font-medium text-center py-10">
-        KHÓA HỌC CHO BÉ
+  return (
+    <>
+      <div className="bg-lime-400 pt-20">
+        <div className="text-7xl font-medium text-center py-10">
+          KHÓA HỌC CHO BÉ
+        </div>
+        <div className="text-4xl font-medium text-yellow-500 px-10 mt-10 mb-10">
+          BÁN CHẠY NHẤT
+        </div>
+        <div className="slide-container">
+          <Slide>{SlideShow(courses.slice(3))}</Slide>
+        </div>
+        <div className="text-4xl font-medium text-yellow-500 px-10 mt-10 mb-10">
+          CHO BÉ BẮT ĐẦU
+        </div>
+        <div className="slide-container">
+          <Slide>{SlideShow(courses.slice(3))}</Slide>
+        </div>
+        <div className="text-4xl font-medium text-yellow-500 px-10 mt-10 mb-10">
+          Mới Cập Nhập
+        </div>
+        <div className="slide-container">
+          <Slide>{SlideShow(courses)}</Slide>
+        </div>
       </div>
-      <div className="text-4xl font-medium text-yellow-500 px-10 mt-10 mb-10">
-        BÁN CHẠY NHẤT
-      </div>
-      <div className="slide-container">
-        <Slide>{SlideShow(courses.slice(3))}</Slide>
-      </div>
-      <div className="text-4xl font-medium text-yellow-500 px-10 mt-10 mb-10">
-        CHO BÉ BẮT ĐẦU
-      </div>
-      <div className="slide-container">
-        <Slide>{SlideShow(courses.slice(3))}</Slide>
-      </div>
-      <div className="text-4xl font-medium text-yellow-500 px-10 mt-10 mb-10">
-        Mới Cập Nhập
-      </div>
-      <div className="slide-container">
-        <Slide>{SlideShow(courses)}</Slide>
-      </div>
-    </div>
 
-    <div>
+      <div>
         <Modal
           open={open}
           onClose={handleClose}
@@ -95,4 +95,5 @@ export const HomeCourses = () => {
         </Modal>
       </div>
     </>
-}
+  );
+};

@@ -22,6 +22,11 @@ export interface levelModel {
   levelName: string;
 }
 
+export interface DrawingCategoryModel {
+	drawCategoryId: number ;
+	drawCategoryName: String ;
+}
+
 export interface Blog {
   postId: number;
   title: string;
