@@ -47,10 +47,9 @@ const OrderHistory = () => {
                   <td className="px-4 py-2 text-neutral-600 font-medium">
                     {oh.price}
                   </td>
-                  <td className=" px-4 py-2 text-neutral-600 font-medium">
-                    {oh.userid}
+                  <td className="px-4 py-2 text-neutral-600 font-medium">
+                    {oh.status}
                   </td>
-                  <td className="px-4 py-2 text-neutral-600 font-medium"></td>
                 </tr>
               ))}
             </tbody>

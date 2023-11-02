@@ -10,7 +10,7 @@ export const MyCourseShow = ({course}:{course:Course|any}) => {
 
     const navigate = useNavigate()
     return (
-      <div className="w-3/12 mx-10 border-4">
+      <div className="w-3/12 mx-10 border-4 mb-5">
         <div
           onClick={() => navigate(`/Lessions/${course.courseId}`)}
           className="border-b-4 border-black"

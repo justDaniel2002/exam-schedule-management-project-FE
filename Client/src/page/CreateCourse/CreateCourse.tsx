@@ -26,10 +26,10 @@ export const CreateCourse = () => {
     data.instructorId = account.userid;
 
     const addCourse = await API.addCourse(data);
-    if (addCourse) {
+    if (addCourse?.courseId) {
       navigate(`/CreateLession/${addCourse.courseId}`);
     } else {
-      toast("create course failed", { type: toast.TYPE.ERROR });
+      toast("create course failed or course already existed", { type: toast.TYPE.ERROR });
     }
   };
   return (

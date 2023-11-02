@@ -8,7 +8,7 @@ export const CreateLession = () => {
   const account: any = useRecoilValue(accountState);
   const { courseId } = useParams();
   const [lessions, setLessions] = useState([
-    { title: "", videoUrl: "", courseId },
+    { title: "", videoUrl: "", content:"", courseId },
   ]);
   const navigate = useNavigate();
 
@@ -26,7 +26,7 @@ export const CreateLession = () => {
 
   const addLession = (event: any) => {
     event.preventDefault();
-    setLessions([...lessions, { title: "", videoUrl: "", courseId }]);
+    setLessions([...lessions, { title: "", videoUrl: "", content:"", courseId }]);
   };
 
   const removeLession = (lession: any) => {
@@ -74,7 +74,7 @@ export const CreateLession = () => {
                 {index > 0 ? (
                   <button
                     onClick={() => removeLession(lession)}
-                    className="p-2 bg-lime-600"
+                    className="block p-2 bg-lime-600 mb-5"
                   >
                     remove lession
                   </button>

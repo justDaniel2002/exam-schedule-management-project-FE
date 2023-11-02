@@ -28,8 +28,8 @@ const Payment = () => {
       order_code: generateShortUUID(uuidv4().toString()),
       order_date: formatDateToYYYYMMDD(new Date()),
       price: formData.get(`ammount`),
-      user_id: account.userid,
-      courseIds: cart.map(c => c.Course.courseid)
+      userid: account.userid,
+      courseIds: cart.map(c => c.Course.courseId)
     }
 
     console.log(orderData);

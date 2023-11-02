@@ -50,7 +50,7 @@ export interface Course {
   title: string;
   rating: number;
   userinfo: userInfo | null;
-  levelModal: levelModel | null;
+  levelModel: levelModel | null;
   courseImage: string;
   cateInfo: blogCateInfo|null;
   userModelRespone: userModelRespone|null

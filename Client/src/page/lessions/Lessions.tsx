@@ -1,14 +1,22 @@
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useParams } from "react-router-dom";
 import { Lession } from "../../Type/Type";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import YouTube from "react-youtube";
+import { API } from "../../API/API";
 
 export const Lessions = () => {
-  const Lessions: Lession[] | any = useLoaderData();
-  const [selectedL, setSelectedL] = useState(Lessions[0]);
+  
+  const {courseid}:any = useParams()
+  const [Lessions, setLesssions]:any = useState([]);
+  const [selectedL, setSelectedL]:any = useState();
 
   const apiKey = "AIzaSyBMYI96nG9oT_8IYLchT37ifV8cfHcAzTg";
+
+  useEffect(() => {
+    setThumnail();
+  }, []);
+
 
   // Construct the API URL
   const getThumbNail = async (videoId: string) => {
@@ -19,13 +27,14 @@ export const Lessions = () => {
   };
 
   const setThumnail = async () => {
-    for (let lession of Lessions) {
+    const updateLession = await API.getLessionByCourse(courseid)
+    for (let lession of updateLession) {
       // Edit the array element here, for example, double each element.
       lession.thumbnail = await getThumbNail(lession.videoUrl);
     }
+    setLesssions(updateLession);
+    setSelectedL(updateLession[0])
   };
-
-  setThumnail()
 
   return (
     <>

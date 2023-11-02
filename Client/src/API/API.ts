@@ -1,4 +1,5 @@
 import axios from "axios";
+import { toast } from "react-toastify";
 
 const getAllCourse = async () => {
   const res = await axios.get(`http://localhost:8088/public/course/view`);
@@ -62,11 +63,8 @@ const getLessionByCourse = async (courseid: string) => {
   return res?.data;
 };
 
-const editUser = async (userid: number, data: any) => {
-  const res = await axios.put(
-    `http://localhost:8088/public/user/edit/${userid}`,
-    data
-  );
+const editUser = async (data: any) => {
+  const res = await axios.put(`http://localhost:8088/public/user/edit`, data);
   console.log(res);
   return res?.data;
 };
@@ -103,7 +101,7 @@ const getCourseLevel = async () => {
   return res?.data;
 };
 
-const getCourseByCategory = async (categoryId:number) => {
+const getCourseByCategory = async (categoryId: number) => {
   const res = await axios.get(
     `http://localhost:8088/public/course/find?category=${categoryId}`
   );
@@ -113,27 +111,26 @@ const getCourseByCategory = async (categoryId:number) => {
 
 const changePassword = async (data: any) => {
   const res = await axios.put(
-    `http://localhost:8088/public/account/change-password`,data
+    `http://localhost:8088/public/account/change-password`,
+    data
   );
   console.log(res);
   return res?.data;
 };
 
-const addCourse = async (data:any) => {
-  const res = await axios.post(
-    `http://localhost:8088/public/course/addCourse`,data
-  );
+const addCourse = async (data: any) => {
+  const res:any = await axios
+    .post(`http://localhost:8088/public/course/addCourse`, data)
+    .catch((err) => console.log(err));
   console.log(res);
   return res?.data;
-}
+};
 
-const addLession = async (data:any) => {
-  const res = await axios.post(
-    `http://localhost:8088/public/lesson/add`,data
-  );
+const addLession = async (data: any) => {
+  const res = await axios.post(`http://localhost:8088/public/lesson/add`, data);
   console.log(res);
   return res?.data;
-}
+};
 
 export const API = {
   getAllCourse,
@@ -152,5 +149,5 @@ export const API = {
   getCourseByInstructor,
   getCourseLevel,
   addCourse,
-  addLession
+  addLession,
 };

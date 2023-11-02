@@ -31,8 +31,9 @@ const EditProfile = ()=> {
         data[key] = value;
       });
       data.status = true
+      data.userid = userid
     
-      await API.editUser(userid, data)
+      await API.editUser(data)
       await callback()
       navigate("/SignIn")
     };
