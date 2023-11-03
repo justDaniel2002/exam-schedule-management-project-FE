@@ -42,6 +42,9 @@ import { instructorCourseLoader } from "./page/InstructorCourses/instructorCours
 import { CreateCourse } from "./page/CreateCourse/CreateCourse";
 import { CreateLession } from "./page/CreateLession/CreateLession";
 import { createCourseLoader } from "./page/CreateCourse/createCourseLoader";
+import { EditCourse } from "./page/EditCourse/EditCourse";
+import { EditLession } from "./page/EditLession/EditLession";
+import { editCourseLoader } from "./page/EditCourse/editCourseLoader";
 
 function App() {
 
@@ -72,6 +75,8 @@ function App() {
           <Route path="Courses/:category/:categoryId" element={<Courses />} loader={coursesLoader}/>
           <Route path="createCourse" element={<CreateCourse />} loader={createCourseLoader}/>
           <Route path="CreateLession/:courseId" element={<CreateLession />}/>
+          <Route path="EditCourse/:courseId" element={<EditCourse />} loader={editCourseLoader}/>
+          <Route path="EditLession/:courseId" element={<EditLession />}/>
         </Route>
       </Route>
     ),

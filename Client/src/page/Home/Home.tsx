@@ -27,7 +27,7 @@ const Home = () => {
           }}
           className="border-b-4 border-black"
         >
-          <img className="w-4/5 m-auto mt-5 mb-10" src={course.courseImage} />
+          <img className="w-4/5 m-auto mt-5 mb-10" src={course?.courseImage} />
           <div className="flex justify-end">
             <div className="text-center text-xs bg-yellow-500 w-1/4">
               {course?.levelModel !== undefined

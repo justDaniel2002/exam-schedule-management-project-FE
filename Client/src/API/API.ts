@@ -7,6 +7,12 @@ const getAllCourse = async () => {
   return res?.data;
 };
 
+const getCourseById = async (id:string) => {
+  const res = await axios.get(`http://localhost:8088/public/course/getcourse/${id}`);
+  console.log(res);
+  return res?.data;
+};
+
 const getAllPost = async () => {
   const res = await axios.get(`http://localhost:8088/public/post/viewallpost`);
   console.log(res);
@@ -126,6 +132,28 @@ const addCourse = async (data: any) => {
   return res?.data;
 };
 
+const editCourse = async (id:string, data: any) => {
+  const res:any = await axios
+    .put(`http://localhost:8088/public/course/edit/${id}`, data)
+    .catch((err) => console.log(err));
+  console.log(res);
+  return res?.data;
+};
+
+const deleteCourse = async (id:string) => {
+  const res:any = await axios
+    .delete(`http://localhost:8088/public/course/delete/${id}`)
+    .catch((err) => console.log(err));
+  console.log(res);
+  return res?.data;
+};
+
+const getLessionByCourseId = async (id: string) => {
+  const res = await axios.get(`http://localhost:8088/public/lesson/find-by-course-id/${id}`);
+  console.log(res);
+  return res?.data;
+};
+
 const addLession = async (data: any) => {
   const res = await axios.post(`http://localhost:8088/public/lesson/add`, data);
   console.log(res);
@@ -137,17 +165,25 @@ export const API = {
   getAllPost,
   getPostById,
   getTop4Course,
-  payment,
-  getCourseByUser,
-  getLessionByCourse,
-  editUser,
+  getCourseById,
+  getLessionByCourseId,
   getUserInfo,
   getOrderHistory,
   getCourseCategories,
   getCourseByCategory,
-  changePassword,
   getCourseByInstructor,
   getCourseLevel,
+  getCourseByUser,
+  getLessionByCourse,
+
   addCourse,
   addLession,
+
+  editUser,
+  editCourse,
+  
+  deleteCourse,
+
+  payment,
+  changePassword,
 };
