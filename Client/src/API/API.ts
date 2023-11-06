@@ -95,6 +95,30 @@ const getUserInfo = async (userid: number) => {
   return res?.data;
 };
 
+const getAllCusInfo = async () => {
+  const res = await axios.get(
+    `http://localhost:8088/public/user/find-All-Customer`
+  );
+  console.log(res);
+  return res?.data;
+};
+
+const getAllStaffInfo = async () => {
+  const res = await axios.get(
+    `http://localhost:8088/public/user/find-All-Staff`
+  );
+  console.log(res);
+  return res?.data;
+};
+
+const getAllInsInfo = async () => {
+  const res = await axios.get(
+    `http://localhost:8088/public/user/find-All-Instructor`
+  );
+  console.log(res);
+  return res?.data;
+};
+
 const getOrderHistory = async (userid: string) => {
   const res = await axios.get(
     `http://localhost:8088/public/user/orders/${userid}`
@@ -195,6 +219,12 @@ const addLession = async (data: any) => {
   return res?.data;
 };
 
+const banAccount = async (userid: number) => {
+  const res = await axios.put(`http://localhost:8088/public/user/toggle-status/${userid}`);
+  console.log(res);
+  return res?.data;
+}
+
 export const API = {
   getAllCourse,
   getAllPost,
@@ -213,6 +243,9 @@ export const API = {
   getTrueCourseByCategory,
   getAllTrueCourse,
   getAllFalseCourse,
+  getAllCusInfo,
+  getAllStaffInfo,
+  getAllInsInfo,
 
   addCourse,
   addLession,
@@ -226,4 +259,5 @@ export const API = {
 
   payment,
   changePassword,
+  banAccount,
 };

@@ -70,8 +70,20 @@ const HomeNavbar = () => {
             </Link>
           ) : account?.rolename === "STAFF" ? (
             <>
-              <Link className="font-semibold mr-10 hover:text-yellow-500" to={"/FalseCourse"}>
+              <Link
+                className="font-semibold mr-10 hover:text-yellow-500"
+                to={"/FalseCourse"}
+              >
                 Duyệt khóa học
+              </Link>
+            </>
+          ) : account?.rolename === "ADMIN" ? (
+            <>
+              <Link
+                className="font-semibold mr-10 hover:text-yellow-500"
+                to={"/AccountManager"}
+              >
+                Quản lý tài khoản
               </Link>
             </>
           ) : (

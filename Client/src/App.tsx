@@ -9,7 +9,6 @@ import "react-slideshow-image/dist/styles.css";
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
 import AdminLayout from "./layout/AminLayout";
-import Error from "./page/Error";
 import Admin from "./page/Admin";
 import PageLayout from "./layout/PageLayout";
 import Home from "./page/Home/Home";
@@ -48,6 +47,7 @@ import { editCourseLoader } from "./page/EditCourse/editCourseLoader";
 import { InstructorProfile } from "./page/InstructorProfile/InstructorProfile";
 import { instructorLoader } from "./page/InstructorProfile/InstructorLoader";
 import { FalseCourse } from "./page/FalseCourse/FalseCourse";
+import { AccountTable, InsTable, StaffsTable } from "./page/AccountManagerTable";
 
 function App() {
 
@@ -55,7 +55,10 @@ function App() {
     createRoutesFromElements(
       <Route>
         <Route path="/" element={<AdminLayout />}>
-          <Route path="admin" element={<Admin />}></Route>
+          <Route path="admin" element={<Admin />} />
+          <Route path="admin/users" element={<AccountTable />} />
+          <Route path="admin/instructors" element={<InsTable />} />
+          <Route path="admin/staffs" element={<StaffsTable />} />
         </Route>
         <Route path="/" element={<PageLayout />}>
           <Route index element={<Home />} loader={homeLoader}/>
