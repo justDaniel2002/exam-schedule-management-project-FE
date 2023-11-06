@@ -45,12 +45,15 @@ import { createCourseLoader } from "./page/CreateCourse/createCourseLoader";
 import { EditCourse } from "./page/EditCourse/EditCourse";
 import { EditLession } from "./page/EditLession/EditLession";
 import { editCourseLoader } from "./page/EditCourse/editCourseLoader";
+import { InstructorProfile } from "./page/InstructorProfile/InstructorProfile";
+import { instructorLoader } from "./page/InstructorProfile/InstructorLoader";
+import { FalseCourse } from "./page/FalseCourse/FalseCourse";
 
 function App() {
 
   const router = createBrowserRouter(
     createRoutesFromElements(
-      <Route errorElement={<Error />}>
+      <Route>
         <Route path="/" element={<AdminLayout />}>
           <Route path="admin" element={<Admin />}></Route>
         </Route>
@@ -77,6 +80,8 @@ function App() {
           <Route path="CreateLession/:courseId" element={<CreateLession />}/>
           <Route path="EditCourse/:courseId" element={<EditCourse />} loader={editCourseLoader}/>
           <Route path="EditLession/:courseId" element={<EditLession />}/>
+          <Route path="InstructorProfile/:userId" element={<InstructorProfile />} loader={instructorLoader}/>FalseCourse
+          <Route path="FalseCourse" element={<FalseCourse />} />
         </Route>
       </Route>
     ),

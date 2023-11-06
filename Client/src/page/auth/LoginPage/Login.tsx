@@ -13,6 +13,7 @@ const Login = () => {
   const navigate = useNavigate()
 
   useEffect(() => {
+    setAccount(undefined)
     if (!result && !mount) {
       toast("Unthentication", {type: toast.TYPE.ERROR})
     }

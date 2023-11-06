@@ -13,7 +13,15 @@ export const EditLession = () => {
   useEffect(()=>{
     const callback = async() => {
       const getLessions = await API.getLessionByCourseId(courseId)
-      setLessions(getLessions)
+
+      const getLessions2 = getLessions.map((element:any) => {
+        const data = { title: element.title, videoUrl: element.videoUrl, content:element.content, courseId:element.courseInfo.courseId }
+        return data;
+      });
+
+      console.log(getLessions2)
+
+      setLessions(getLessions2)
     }
     callback()
   },[])
@@ -39,11 +47,9 @@ export const EditLession = () => {
     const updateLessions = lessions.filter((Mlession:any) => Mlession !== lession);
     setLessions(updateLessions);
   };
-  const submit = (event: any) => {
+  const submit = async (event: any) => {
     event.preventDefault();
-    lessions.forEach(async (lession:any) => {
-      await API.addLession(lession);
-    });
+    await API.editLessionByCourseId(lessions)
     navigate(`/InstructorCourses/${account.userid}`);
   };
   return (
@@ -96,7 +102,7 @@ export const EditLession = () => {
           </div>
           <div className="mt-10 pb-20 text-center">
             <button className="p-2 bg-orange-400 text-white">
-              Create Lession
+              Edit Lession
             </button>
           </div>
         </Form>
