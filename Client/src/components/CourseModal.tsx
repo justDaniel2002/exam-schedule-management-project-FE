@@ -38,9 +38,9 @@ export const CourseModal = ({ course }: { course: Course | any }) => {
                 <div>Giá: {numberToVietnameseDong(course?.price)} </div>
               </div>
               <Link to={`/InstructorProfile/${course?.userModelRespone.id}`} className="block text-blue-500 mb-5">Giáo viên: {course?.userModelRespone.fullname} </Link>
-              <span className="p-3 bg-orange-500 text-white font-medium mr-5">
+              <Link to={`Courses/${course?.drawingCategoryModel?.drawCategoryName}/${course?.drawingCategoryModel?.drawCategoryId}`} className="p-3 bg-orange-500 text-white font-medium mr-5">
                 {course?.drawingCategoryModel?.drawCategoryName}
-              </span>
+              </Link>
               <span className="p-3 bg-orange-500 text-white font-medium">
                 {course?.levelModel?.levelName}
               </span>

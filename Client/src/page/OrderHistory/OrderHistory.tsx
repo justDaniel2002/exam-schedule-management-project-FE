@@ -9,6 +9,7 @@ const OrderHistory = () => {
   useEffect(() => {
     const callBack = async () => {
       const oh = await API.getOrderHistory(account?.userid);
+      console.log("Order History", oh);
       setHistory(oh);
     };
     callBack();
@@ -47,7 +48,7 @@ const OrderHistory = () => {
                     {oh.price}
                   </td>
                   <td className="px-4 py-2 text-neutral-600 font-medium">
-                    {oh.status}
+                    {oh.order_status?"Paid":"Processing"}
                   </td>
                 </tr>
               ))}

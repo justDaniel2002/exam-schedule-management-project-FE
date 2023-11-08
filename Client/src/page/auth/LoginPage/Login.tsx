@@ -66,7 +66,7 @@ const Login = () => {
           <span className="mx-10">Or </span>
           <hr className="w-1/4" />
         </div>
-        <button className="w-1/4 px-4 py-2 border justify-center items-center flex gap-2 border-slate-200 rounded-lg text-slate-700 hover:border-slate-400 hover:text-slate-900 hover:shadow transition duration-150 m-auto">
+        {/* <button className="w-1/4 px-4 py-2 border justify-center items-center flex gap-2 border-slate-200 rounded-lg text-slate-700 hover:border-slate-400 hover:text-slate-900 hover:shadow transition duration-150 m-auto">
           <img
             className="w-5 h-5"
             src="https://www.svgrepo.com/show/475656/google-color.svg"
@@ -74,7 +74,7 @@ const Login = () => {
             alt="google logo"
           />
           <span>Login with Google</span>
-        </button>
+        </button> */}
         <div className="mt-3 font-medium mb-20">
           First time know this page ? <Link to={"/signUp"}>Sign Up</Link>
         </div>
