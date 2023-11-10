@@ -1,14 +1,13 @@
 import { useRecoilState, useRecoilValue } from "recoil";
 import { CartElement, Course } from "../Type/Type";
 import { accountState, cartState } from "../atom/atom";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import { numberToVietnameseDong } from "../util/util";
 
 export const CourseModal = ({ course }: { course: Course | any }) => {
   const account: any = useRecoilValue(accountState);
   const [cart, setCart]: any = useRecoilState(cartState);
-  const navigate = useNavigate();
 
   const addToCart = () => {
     var cartCourse = cart.find(
@@ -18,7 +17,6 @@ export const CourseModal = ({ course }: { course: Course | any }) => {
       toast("Course already added", { type: toast.TYPE.WARNING });
     } else {
       setCart([...cart, { Course: course, EnrollDate: new Date() }]);
-      navigate("/Cart");
     }
   };
   return (
