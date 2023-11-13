@@ -58,4 +58,16 @@ export function isPhoneNumberValid(phoneNumber:string) {
   return phonePattern.test(phoneNumber);
 }
 
+export function generateRandomPassword(length:number) {
+  const charset = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"; // Define the character set
+  let password = "";
+
+  for (let i = 0; i < length; i++) {
+    const randomIndex = Math.floor(Math.random() * charset.length);
+    password += charset.charAt(randomIndex);
+  }
+
+  return password;
+}
+
 export {numberToVietnameseDong}

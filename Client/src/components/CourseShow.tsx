@@ -6,9 +6,10 @@ import { Box, Modal } from "@mui/material";
 import { modalCOurseStyle } from "../css/modalStyle";
 import ReportPage from "../page/ReportPage";
 
-export const MyCourseShow = ({ course }: { course: Course | any }) => {
+export const MyCourseShow = ({ mcourse }: { mcourse: any }) => {
   const [open, setOpen] = useState(false);
   const [modalCourse, setModalCourse]: any = useState();
+  const [course, setCourse]: any = useState(mcourse.course);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const navigate = useNavigate();
@@ -42,7 +43,7 @@ export const MyCourseShow = ({ course }: { course: Course | any }) => {
           Học
         </Link>
       </div>
-      {/* <div className="text-center my-5">
+      <div className="text-center my-5">
         <button>
           <button
             onClick={() => {
@@ -54,9 +55,9 @@ export const MyCourseShow = ({ course }: { course: Course | any }) => {
             Feedback
           </button>
         </button>
-      </div> */}
+      </div>
 
-      {/* <div>
+      <div>
         <Modal
           open={open}
           onClose={handleClose}
@@ -67,10 +68,11 @@ export const MyCourseShow = ({ course }: { course: Course | any }) => {
             <ReportPage
               courseId={modalCourse?.courseId}
               handleClose={handleClose}
+              order={mcourse.order}
             />
           </Box>
         </Modal>
-      </div> */}
+      </div>
     </div>
   );
 };

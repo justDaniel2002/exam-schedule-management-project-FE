@@ -9,7 +9,6 @@ import "react-slideshow-image/dist/styles.css";
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
 import AdminLayout from "./layout/AminLayout";
-import Admin from "./page/Admin";
 import PageLayout from "./layout/PageLayout";
 import Home from "./page/Home/Home";
 import LandingPage from "./page/LandingPage";
@@ -56,7 +55,7 @@ function App() {
     createRoutesFromElements(
       <Route>
         <Route path="/" element={<AdminLayout />}>
-          <Route path="admin" element={<Admin />} />
+          <Route path="admin" element={<AccountTable />} />
           <Route path="admin/users" element={<AccountTable />} />
           <Route path="admin/instructors" element={<InsTable />} />
           <Route path="admin/staffs" element={<StaffsTable />} />

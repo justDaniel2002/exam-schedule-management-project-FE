@@ -7,6 +7,9 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
+import { Box, Modal } from "@mui/material";
+import { modalCOurseStyle } from "../css/modalStyle";
+import { CreateModalInstructor, CreateModalStaff } from "../components/Modals/CreateModal";
 
 function createData({
   userid,
@@ -45,7 +48,6 @@ function createData({
   };
 }
 
-
 export const AccountTable = () => {
   const [rows, setRows]: any = useState([]);
 
@@ -60,12 +62,18 @@ export const AccountTable = () => {
 
   return (
     <>
-      <RowTable rows={rows} callback={callBack}/>
+      <RowTable rows={rows} callback={callBack} />
     </>
   );
 };
 
 export const StaffsTable = () => {
+  const [open, setOpen]: any = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = async () => {
+    setOpen(false);
+    await callBack();
+  };
   const [rows, setRows]: any = useState([]);
 
   const callBack = async () => {
@@ -79,12 +87,34 @@ export const StaffsTable = () => {
 
   return (
     <>
-      <RowTable rows={rows} callback={callBack}/>
+    <button
+        onClick={handleOpen}
+        className="p-2 text-white bg-blue-500 rounded-xl mb-3"
+      >
+        Create Staff
+      </button>
+      <RowTable rows={rows} callback={callBack} />
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={modalCOurseStyle}>
+          <CreateModalStaff handleClose={handleClose} />
+        </Box>
+      </Modal>
     </>
   );
 };
 
 export const InsTable = () => {
+  const [open, setOpen]: any = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = async () => {
+    setOpen(false);
+    await callBack();
+  };
   const [rows, setRows]: any = useState([]);
 
   const callBack = async () => {
@@ -98,18 +128,33 @@ export const InsTable = () => {
 
   return (
     <>
-      <RowTable rows={rows} callback={callBack}/>
+      <button
+        onClick={handleOpen}
+        className="p-2 text-white bg-blue-500 rounded-xl mb-3"
+      >
+        Create Instructor
+      </button>
+      <RowTable rows={rows} callback={callBack} />
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={modalCOurseStyle}>
+          <CreateModalInstructor handleClose={handleClose} />
+        </Box>
+      </Modal>
     </>
   );
 };
 
 const RowTable = ({ rows, callback }: any) => {
+  const banAccount = async (userid: number) => {
+    await API.banAccount(userid);
+    await callback();
+  };
 
-  const banAccount = async (userid:number) => {
-    await API.banAccount(userid)
-    await callback()
-  }
-  
   return (
     <>
       <TableContainer component={Paper}>
@@ -141,7 +186,9 @@ const RowTable = ({ rows, callback }: any) => {
                 <TableCell align="right">{row.phone}</TableCell>
                 <TableCell align="right">{row.dob}</TableCell>
                 <TableCell align="right">{row.status}</TableCell>
-                <TableCell onClick={() => banAccount(row.userid)} align="right">{row.action}</TableCell>
+                <TableCell onClick={() => banAccount(row.userid)} align="right">
+                  {row.action}
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>
