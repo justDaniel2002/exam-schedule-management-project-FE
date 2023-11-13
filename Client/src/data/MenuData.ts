@@ -12,10 +12,6 @@ const MenuData = [
         label:"Blog",
         link:"/Blogs"
     },
-    {
-        label:"Khóa học thử 3 ngày",
-        link:"/"
-    },
 ]
 
 export default MenuData

@@ -70,4 +70,8 @@ export function generateRandomPassword(length:number) {
   return password;
 }
 
+export function getTotalInCart(cart:any){
+  return cart.reduce((accumulator:number, currentValue:any) => accumulator + currentValue?.Course?.price, 0);
+}
+
 export {numberToVietnameseDong}
