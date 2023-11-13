@@ -74,4 +74,11 @@ export function getTotalInCart(cart:any){
   return cart.reduce((accumulator:number, currentValue:any) => accumulator + currentValue?.Course?.price, 0);
 }
 
+export function randomColorClass(){
+  const classes = ['bg-red-200', 'bg-orange-200', 'bg-amber-200', 'bg-yellow-200', 'bg-green-200','bg-emerald-200']
+  const randomNumber = Math.floor(Math.random() * 6); // This will give you a random integer between 0 and 5.
+
+  return classes[randomNumber]
+}
+
 export {numberToVietnameseDong}
